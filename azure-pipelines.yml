@@ -1,0 +1,71 @@
+# azure-pipelines.yml
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  webAppFolder: 'website'
+  azureServiceConnection: 'github.com_paulomotaber'
+  webAppName: 'dgii-ing-test-paulo'
+
+stages:
+- stage: Build
+  displayName: 'Construir, validar y preparar el artefacto'
+  jobs:
+  - job: BuildJob
+    displayName: 'Ejecutar validaciones y preparar artefactos'
+    steps:
+    - checkout: self
+      persistCredentials: true
+
+    - task: NodeTool@0
+      displayName: 'Install Node.js'
+      inputs:
+        versionSpec: '16.x'
+
+    - script: |
+        echo "--- Iniciando validación/pruebas básicas ---"
+        echo "No se ejecutarán pruebas unitarias complejas para esta página web sencilla."
+        echo "Para una página web estática, las 'pruebas unitarias' pueden incluir:"
+        echo "--- Instalando dependencias de npm ---"
+        cd $(webAppFolder)
+        npm install
+        echo "--- Ejecutando pruebas unitarias de JavaScript ---"
+        npm test
+        echo "--- Ejecutando validaciones de código (Linting, Enlaces, Accesibilidad) ---"
+        npm run validate 
+      displayName: 'Ejecutar validaciones de código y pruebas unitarias'
+
+
+    - task: CopyFiles@2
+      displayName: 'Copiar archivos del sitio web al directorio de almacenamiento temporal de Artifact'
+      inputs:
+        contents: '**' # Copia todos los archivos dentro del sourceFolder
+        targetFolder: '$(Build.ArtifactStagingDirectory)/$(webAppFolder)' # Copia al directorio de staging
+        sourceFolder: '$(System.DefaultWorkingDirectory)/$(webAppFolder)' # Copia desde el folder 'website'
+
+    - publish: '$(Build.ArtifactStagingDirectory)/$(webAppFolder)'
+      artifact: 'websiteArtifact'
+      displayName: 'Publicar artefacto del sitio web'
+
+- stage: Deploy
+  displayName: 'Implementar en Azure App Service'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: DeployJob
+    displayName: 'Implementar aplicación web'
+    steps:
+    - download: current
+      artifact: websiteArtifact
+      displayName: 'Descargar artefacto del sitio web'
+
+    - task: AzureRmWebAppDeployment@4
+      displayName: 'Implementar una aplicación web de Azure'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        appType: 'webApp'
+        appName: '$(webAppName)'
+        package: '$(Pipeline.Workspace)/websiteArtifact' # Ruta al artefacto descargado
