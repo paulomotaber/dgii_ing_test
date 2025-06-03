@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint:js": "eslint .",
-    "lint:css": "stylelint '**/*.css'",
+    "lint:css": "stylelint **/*.css",
     "lint:html": "htmlhint .",
     "check:links": "blc . --recursive --skip-external --exclude-file-type=gif,jpg,png,pdf",
     "check:a11y": "axe website/**/*.html",
@@ -20,7 +20,8 @@
     "@axe-core/cli": "^4.x.x",
     "@eslint/js": "^9.28.0",
     "axe-core": "^4.x.x",
-    "broken-link-checker": "^0.4.3",
+    "broken-link-checker": "^0.7.8",
+    "eslint": "^9.28.0",
     "globals": "^16.2.0",
     "htmlhint": "^1.x.x",
     "jest": "^29.x.x",
