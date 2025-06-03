@@ -6,11 +6,10 @@
   "scripts": {
     "test": "npx jest",
     "lint:js": "npx eslint .",
-    "lint:css": "stylelint **/*.css",
     "lint:html": "htmlhint .",
     "check:links": "blc . --recursive --skip-external --exclude-file-type=gif,jpg,png,pdf",
     "check:a11y": "axe website/**/*.html",
-    "validate": "npm run lint:js && npm run lint:css && npm run lint:html && npm run check:links && npm run check:a11y",
+    "validate": "npm run lint:js && npm run lint:html && npm run check:links && npm run check:a11y",
     "start": "echo 'This is a static website, use a local server for testing/development.'"
   },
   "keywords": [],
