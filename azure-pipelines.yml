@@ -23,15 +23,18 @@ stages:
     - task: NodeTool@0
       displayName: 'Install Node.js'
       inputs:
-        versionSpec: '18.x'
+        versionSpec: '22.x'
 
     - script: |
         echo "--- Iniciando validación/pruebas básicas ---"
         echo "No se ejecutarán pruebas unitarias complejas para esta página web sencilla."
         echo "Para una página web estática, las 'pruebas unitarias' pueden incluir:"
-        echo "--- Instalando dependencias de npm ---"
+        echo "Cambiando al folder"
         cd $(webAppFolder)
-        npm install
+        echo "--- Borrando npm ---"
+        rm -rf node_modules
+        echo "--- Instalando dependencias de npm ---"
+        nmp install
         echo "--- Ejecutando pruebas unitarias de JavaScript ---"
         npm test
         echo "--- Ejecutando validaciones de código (Linting, Enlaces, Accesibilidad) ---"
