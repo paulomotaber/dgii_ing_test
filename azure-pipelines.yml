@@ -9,6 +9,7 @@ variables:
   webAppFolder: 'website'
   azureServiceConnection: 'ARM_conexion'
   webAppName: 'dgii-ing-test-paulo'
+  
 
 stages:
 - stage: Build
@@ -72,5 +73,5 @@ stages:
       inputs:
         azureSubscription: '$(azureServiceConnection)'
         appType: 'webApp'
-        appName: '$(webAppName)'
+        webAppName: '$(webAppName)'
         package: '$(Pipeline.Workspace)/websiteArtifact' # Ruta al artefacto descargado
