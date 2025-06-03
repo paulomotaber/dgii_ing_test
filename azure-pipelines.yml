@@ -3,7 +3,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  default: 'ubuntu-latest'
 
 variables:
   webAppFolder: 'website'
