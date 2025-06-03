@@ -9,7 +9,7 @@
     "lint:html": "htmlhint .",
     "check:a11y": "axe website/index.html",
     "validate": "npm run lint:js && npm run lint:html",
-    "start": "echo 'This is a static website, use a local server for testing/development.'"
+    "start": "echo 'Este es un sitio web estático, utiliza un servidor local para pruebas/desarrollo.'"
   },
   "keywords": [],
   "author": "",
