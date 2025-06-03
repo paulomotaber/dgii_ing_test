@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "lint:js": "eslint .",
+    "test": "npx jest",
+    "lint:js": "npx eslint .",
     "lint:css": "stylelint **/*.css",
     "lint:html": "htmlhint .",
     "check:links": "blc . --recursive --skip-external --exclude-file-type=gif,jpg,png,pdf",
