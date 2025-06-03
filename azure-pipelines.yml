@@ -7,7 +7,7 @@ pool:
 
 variables:
   webAppFolder: 'website'
-  azureServiceConnection: 'github.com_paulomotaber'
+  #azureServiceConnection: 'github.com_paulomotaber'
   webAppName: 'dgii-ing-test-paulo'
 
 stages:
@@ -65,7 +65,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       displayName: 'Implementar una aplicación web de Azure'
       inputs:
-        azureSubscription: '$(azureServiceConnection)'
+       # azureSubscription: '$(azureServiceConnection)'
         appType: 'webApp'
         appName: '$(webAppName)'
         package: '$(Pipeline.Workspace)/websiteArtifact' # Ruta al artefacto descargado
