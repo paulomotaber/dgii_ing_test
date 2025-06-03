@@ -3,7 +3,7 @@ trigger:
 - main
 
 pool:
-  default: 'ubuntu-latest'
+  name: 'default'
 
 variables:
   webAppFolder: 'website'
