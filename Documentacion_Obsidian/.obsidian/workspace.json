@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Escenario_II_Ejercicio_2/Documentacion_No.2.md",
-                "mode": "source",
+                "file": "Escenario_II_Ejercicio_1/Documentacion_No.1.md",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Documentacion_No.2"
+              "title": "Documentacion_No.1"
             }
           }
         ]
@@ -168,14 +168,14 @@
   },
   "active": "6c2b19071afe1f2c",
   "lastOpenFiles": [
+    "Escenario_II_Ejercicio_2/Documentacion_No.2.md",
     "Escenario_II_Ejercicio_1/Documentacion_No.1.md",
+    "General.md",
     "Azure/ACR.md",
     "Azure/AKS.md",
     "Azure/Costos.md",
     "Azure/PipeLines.md",
     "Azure/RG.md",
-    "General.md",
-    "Escenario_II_Ejercicio_2/Documentacion_No.2.md",
     "Azure/recursos/e53f0b8534d0de64b0abc98d2578577e_MD5.png",
     "Azure/recursos/3df4e45617cf030fc02ad782e235c38e_MD5.png",
     "Azure/recursos/a3acaaa66298e9740e2ac5856e3b893d_MD5.png",
